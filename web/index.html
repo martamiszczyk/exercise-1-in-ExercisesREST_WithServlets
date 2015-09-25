@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script>
+            $(document).ready(function ()
+            {
+                $("#getbtn").click(function () {
+                    $.ajax({
+                        url: "api/quote/" + $("#qid").val(),
+                        type: "GET",
+                        dataType: "json"
+                    }).done(function (dataFromServer) {
+                        $("#thequote").val(dataFromServer.quote);
+                    }).fail(function () {
+                        alert("Ups");
+                    });
+                });
+
+            });
+
+
+
+
+        </script>
+
+    </head>
+    <body>
+        <div>Quote Editor</div>
+        <div> 
+            <input id="qid" type="text" placeholder="Enter id">
+            <button id="getbtn">Get Quote</button>
+        </div>
+        <div>
+            <input id="thequote" style="width: 60em;margin-top: 1em">
+        </div>
+    </body>
+</html>
